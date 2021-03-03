@@ -81,8 +81,7 @@ newDeck.addEventListener('click', () => {
     div.innerHTML += deal.cards[i].value + " " + deal.cards[i].suit;
     dealCards.appendChild(div);
 
-    //Change color to red if hearts or diamonds for both player and computer cards
-    
+    //Change color to red if card is a heart or diamond  
     if (deal.cards[i].suit == "&#9829;" || deal.cards[i].suit == "&#9830;") {
       div.style.color = 'red';
   } else {
