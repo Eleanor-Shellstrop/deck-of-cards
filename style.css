@@ -1,22 +1,59 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 body {
-    background-color: lightgray;
+    background-color: green;
     width: 100%;
     height: 100%;
+    min-width: fit-content;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset 0px 0px 100px darkgreen, 
+                inset 0px 0px 30px black;
+    margin: 0 auto;
 }
 
 #board {
     margin: 3%;
-    background-color: green;
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
+    width: 90%;
     height: 100%;
+    justify-content: center;
+}
+
+#shuffleButton {
+    min-height: 75px;
+    min-width: 200px;
+    border-radius: 5%;
+    border: 3px solid rgb(139, 102, 8);
+    background-color: goldenrod;
+    box-shadow: 7px 7px 10px black;
+    color: white;
+    margin: 20px auto;
+    font-size: 1.5rem;
 }
 
 .card {
     background-color: white;
+    border: 4px solid goldenrod;
     padding: 25px;
     margin: 20px 30px;
     width: 50px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    text-align: center;  
+    box-shadow: 7px 5px 10px black, 
+                -7px 5px 10px rgb(88, 87, 87), 
+                inset 0px 0px 20px gray;
+}
+
+.card ♥ {
+    color: red;
 }

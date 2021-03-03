@@ -18,8 +18,9 @@ class Deck {
       this.cards = [];
   }
   createDeck() {
-      const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
-      const suits = ["Hearts", "Diamonds", "Spades", "Clovers"];
+      const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+      const suits = ["&#9829;", "&#9830;", "&#9824;", "&#9827;"];
+      // Hearts, Diamonds, Spades and Clubs (respectively) in HTML code
       for (let i = 0; i < values.length; i++) {
           for (let j = 0; j < suits.length; j++) {
               Card.value = values[i];
@@ -79,5 +80,14 @@ newDeck.addEventListener('click', () => {
     div.className = 'card';
     div.innerHTML += deal.cards[i].value + " " + deal.cards[i].suit;
     dealCards.appendChild(div);
+
+    //Change color to red if hearts or diamonds for both player and computer cards
+    
+    if (deal.cards[i].suit == "&#9829;" || deal.cards[i].suit == "&#9830;") {
+      div.style.color = 'red';
+  } else {
+      div.style.color = 'black';
+  }; 
+
   }
 })
