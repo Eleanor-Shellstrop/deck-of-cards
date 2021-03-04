@@ -2,10 +2,9 @@
 
 This project is to demonstrate and practice JS, CSS and HTML using OOP.
 
-Press the "SHUFFLE" button to display a deck of cards. 
+Press the "SHUFFLE" button to shuffle the deck of cards! 
 
-Note: As of 3/3/2021, still in early stages. Will add:
+Using object-oriented JavaScript, I made a Card object and a Deck object to manipulate the cards more easily for future projects. 
+Can be used as a base for several card games. 
 
-* Card graphics
-* Reset board with every "SHUFFLE" click
-* Better board and button graphics
+No special programs required, download and run from your text editor.

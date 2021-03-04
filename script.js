@@ -16,6 +16,9 @@ class Card {
 class Deck {
   constructor(){
       this.cards = [];
+      this.createDeck();
+      this.shuffle();
+      this.render();
   }
   createDeck() {
       const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -29,12 +32,13 @@ class Deck {
           }
       }
   }
-  /*----------------------------------------------------------------------------------
+  /*-------------------------
     FISHER-YEATS SHUFFLE
+    Better than Math.random()
     Code credit to Anh-Thu Huynh for this version
     Article here:https://medium.com/@oldwestaction/randomness-is-hard-e085decbcbb2
     Comments within code are mine for understanding the method
-  -----------------------------------------------------------------------------------*/
+  --------------------------*/
   shuffle() {
       const { cards } = this;
       for (let i = cards.length - 1; i > 0; i--) {
@@ -54,17 +58,30 @@ class Deck {
       };
       return this;
   }
+  render() {
+    document.getElementById("board").innerHTML = '';
+    //  Create new card class for each playing card, append to "board" element
+    for (let i = 0; i < this.cards.length; i++) {
+      let div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML += this.cards[i].value + " " + this.cards[i].suit;
+      document.getElementById("board").appendChild(div);
+      //  Change color to red if card is a heart or diamond  
+      if (this.cards[i].suit == "&#9829;" || this.cards[i].suit == "&#9830;") {
+        div.style.color = 'red';
+      } else {
+        div.style.color = 'black';
+      }; 
+    }
+  }
 }
 
 
 //  MAKE NEW DECK AND SHUFFLE
-
 const deal = new Deck;
-deal.createDeck();
 deal.shuffle();
+deal.render();
 
-//  Check the shuffled deck
-console.log(deal.cards);
 
 /*===================================================================================================
           HTML LINKS
@@ -73,20 +90,15 @@ console.log(deal.cards);
 const dealCards = document.getElementById("board");
 const newDeck = document.getElementById("shuffleButton");
 
-
+//  SHUFFLES CARDS EVERY CLICK
 newDeck.addEventListener('click', () => { 
-  for (let i = 0; i < deal.cards.length; i++) {
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML += deal.cards[i].value + " " + deal.cards[i].suit;
-    dealCards.appendChild(div);
-
-    //Change color to red if card is a heart or diamond  
-    if (deal.cards[i].suit == "&#9829;" || deal.cards[i].suit == "&#9830;") {
-      div.style.color = 'red';
-  } else {
-      div.style.color = 'black';
-  }; 
-
+    let cards = document.getElementsByClassName('card');
+    //  Replace appended child so a whole new deck does not render every click
+    for (let i = cards.length - 1; i >= 0; i--) {
+      let card = cards[i];
+      let newCard = document.createElement('div');
+      document.getElementById("board").replaceChild(newCard, card);
   }
-})
+  deal.shuffle();
+  deal.render();
+});
