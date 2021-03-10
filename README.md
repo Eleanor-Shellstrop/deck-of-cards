@@ -1,5 +1,8 @@
 ## Deck of Cards
 
+# Demo
+View demo here: https://eleanor-shellstrop.github.io/deck-of-cards/
+
 This project is to demonstrate and practice JS, CSS and HTML using OOP.
 
 Press the "SHUFFLE" button to shuffle the deck of cards! 
